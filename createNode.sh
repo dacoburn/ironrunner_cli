@@ -5,6 +5,7 @@ VERSION=$2
 CLUSTERID=$3
 CLUSTERTOKEN=$4
 
+
 if [ -z $IMAGE ]; then
 	echo "Docker image not specified please specify as the first argument"
 	echo "Usage: DOCKERIMAGE DOCKERTAG CLUSTERID CLUSTERTOKEN"
@@ -12,6 +13,7 @@ if [ -z $IMAGE ]; then
 	echo "DOCKERTAG: The tag, or version to use (i.e. test of latest)"
 	echo "CLUSTERID: the cluster id from your my clusters page"
 	echo "CLUSTERTOKEN: the cluster token from your my clusters page"
+	exit 2
 fi
 
 if [ -z $VERSION ]; then
@@ -21,6 +23,7 @@ if [ -z $VERSION ]; then
         echo "DOCKERTAG: The tag, or version to use (i.e. test of latest)"
         echo "CLUSTERID: the cluster id from your my clusters page"
         echo "CLUSTERTOKEN: the cluster token from your my clusters page"
+	exit 3
 fi
 
 if [ -z $CLUSTERID ]; then
@@ -30,6 +33,7 @@ if [ -z $CLUSTERID ]; then
         echo "DOCKERTAG: The tag, or version to use (i.e. test of latest)"
         echo "CLUSTERID: the cluster id from your my clusters page"
         echo "CLUSTERTOKEN: the cluster token from your my clusters page"
+	exit 4
 fi
 
 if [ -z $CLUSTERTOKEN ]; then
@@ -39,6 +43,7 @@ if [ -z $CLUSTERTOKEN ]; then
         echo "DOCKERTAG: The tag, or version to use (i.e. test of latest)"
         echo "CLUSTERID: the cluster id from your my clusters page"
         echo "CLUSTERTOKEN: the cluster token from your my clusters page"
+	exit 5
 fi
 
 docker ps -a | awk '{print $NF}' | grep -q ironrunner
